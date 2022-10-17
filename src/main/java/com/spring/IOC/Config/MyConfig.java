@@ -16,14 +16,17 @@ import org.springframework.context.annotation.Import;
 public class MyConfig {
 
 
-    @Autowired
-    public org.apache.ibatis.session.Configuration configuration;
 
     @Autowired
+    org.apache.ibatis.session.Configuration configuration;
+
     public MyComponent myComponent;
 
+
     @Autowired
-    public MyBean myBean;
+    public MyConfig(MyComponent myComponent) {
+        this.myComponent = myComponent;
+    }
 
     @Bean
     public MyBean myBean()
