@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class MyBean {
 
-    public static String name;
-    public static int id;
+    public  String name;
+    public  int id;
 }

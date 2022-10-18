@@ -1,5 +1,6 @@
 package com.spring.IOC.Config;
 
+import com.spring.IOC.POJO.AutoWireTest;
 import com.spring.IOC.POJO.MyBean;
 import com.spring.IOC.POJO.MyComponent;
 import lombok.Data;
@@ -20,6 +21,9 @@ public class MyConfig {
     @Autowired
     org.apache.ibatis.session.Configuration configuration;
 
+    @Autowired
+    AutoWireTest autoWireTest;
+
     public MyComponent myComponent;
 
 
@@ -31,6 +35,7 @@ public class MyConfig {
     @Bean
     public MyBean myBean()
     {
+        //System.out.println("create new  Mybean in IOC ");
         return new MyBean();
     }
 }
