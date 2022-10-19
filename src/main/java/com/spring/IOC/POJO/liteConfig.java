@@ -1,7 +1,9 @@
 package com.spring.IOC.POJO;
 
+import com.spring.IOC.Imported.ImportTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
 
 @Configuration

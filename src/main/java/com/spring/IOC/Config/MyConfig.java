@@ -1,5 +1,7 @@
 package com.spring.IOC.Config;
 
+import com.spring.IOC.Imported.DeferredImnportSelectorTest;
+import com.spring.IOC.Imported.ImportTest;
 import com.spring.IOC.POJO.AutoWireTest;
 import com.spring.IOC.POJO.MyBean;
 import com.spring.IOC.POJO.MyComponent;
@@ -12,7 +14,7 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @ComponentScan(basePackages = {"com.spring.IOC.POJO"})
-@Import(org.apache.ibatis.session.Configuration.class)
+@Import({org.apache.ibatis.session.Configuration.class,ImportTest.class, DeferredImnportSelectorTest.class})
 @Data
 public class MyConfig {
 
