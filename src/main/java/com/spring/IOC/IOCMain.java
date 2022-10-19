@@ -10,12 +10,7 @@ import org.springframework.stereotype.Component;
 public class IOCMain {
 
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
-        System.out.println("容器中的Bean3（第一次获取）："+context.getBean(Bean03.class));
-        System.out.println("容器中的Bean3（第二次获取）："+context.getBean(Bean03.class));
-        liteConfig liteConfig = context.getBean(liteConfig.class);
-        System.out.println("容器中的liteconfig："+liteConfig);
-        System.out.println("调用liteconfig中的Bean03方法（第一次调用）："+liteConfig.bean03());
-        System.out.println("调用liteconfig中的Bean03方法（第二次调用）："+liteConfig.bean03());
+        ApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class,liteConfig.class);
+        System.out.println(context.getBean(liteConfig.SonComponent.class));
     }
 }

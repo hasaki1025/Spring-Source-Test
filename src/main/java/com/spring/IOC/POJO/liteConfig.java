@@ -11,5 +11,9 @@ public class liteConfig {
     {
         return new Bean03();
     }
-
+    @Component
+    public class SonComponent{
+        String name;
+        String id;
+    }
 }
