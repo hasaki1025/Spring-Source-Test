@@ -1,43 +1,32 @@
 package com.spring.IOC.Config;
 
-import com.spring.IOC.Imported.DeferredImnportSelectorTest;
-import com.spring.IOC.Imported.ImportTest;
-import com.spring.IOC.POJO.AutoWireTest;
-import com.spring.IOC.POJO.MyBean;
-import com.spring.IOC.POJO.MyComponent;
-import lombok.Data;
+import com.spring.IOC.Bean.Bean01;
+import com.spring.IOC.Bean.Bean02;
+import com.spring.IOC.Bean.MyImportSelector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.stereotype.Component;
 
-@Configuration
-@ComponentScan(basePackages = {"com.spring.IOC.POJO"})
-@Import({org.apache.ibatis.session.Configuration.class,ImportTest.class, DeferredImnportSelectorTest.class})
-@Data
+@Component
+@ComponentScan("com.spring.IOC.Bean")
+@Import({org.apache.ibatis.session.Configuration.class,MyImportSelector.class})
 public class MyConfig {
 
-
-
-    @Autowired
-    org.apache.ibatis.session.Configuration configuration;
-
-    @Autowired
-    AutoWireTest autoWireTest;
-
-    public MyComponent myComponent;
-
-
-    @Autowired
-    public MyConfig(MyComponent myComponent) {
-        this.myComponent = myComponent;
+    @Bean
+    Bean01 bean01()
+    {
+        return new Bean01();
     }
 
-    @Bean
-    public MyBean myBean()
+    Bean02 bean02;
+
+    @Autowired
+    public MyConfig(Bean02 bean02)
     {
-        //System.out.println("create new  Mybean in IOC ");
-        return new MyBean();
+        System.out.println("MyConfig create");
+        this.bean02=bean02;
     }
 }
